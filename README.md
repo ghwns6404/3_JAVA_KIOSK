@@ -2,14 +2,15 @@
 
 ## 팀 구성 및 역할 분담
 
-| 이름 | 역할 | 강점 | 약점 |
-|------|------|------|------|
-| 박준수 | 프로젝트 조정 및 관리, 파트 간 소통, 팀 미팅 진행 | 프로젝트 관리 | DB 접근 미숙 |
-| 이성연 | PPT 제작, 발표 대본 작성, 기능 요구 정리 | 우선순위 기반 개발 전략 | 코드 충돌 처리 미숙 |
-| 김기환 | 주요 코드 작성 및 문서화 | Java 이해도 높음 | 예외 처리 미흡 |
-| 조재영 | 전체 코드 흐름 이해, GUI 디자인 및 버튼 구현 | 의사소통 능력 | 협업 툴 사용 미숙 |
-| 천호준 | 적립금 시스템 및 옵션 기능 개발 | UI 설계 능력 | 예외 처리 미흡 |
-| 주재연 | 기능 아이디어 제안, 오류 검토 | 문제 해결 능력 | UI 경험 부족 |
+| 이름 | 역할 |
+|------|------|
+| 박준수 | 프로젝트 조정 및 관리, 파트 간 소통, 팀 미팅 진행 |
+| 이성연 | PPT 제작, 발표 대본 작성, 기능 요구 정리 |
+| 김기환 | 주요 코드 작성 및 문서화 |
+| 조재영 | 전체 코드 흐름 이해, GUI 디자인 및 버튼 구현 |
+| 천호준 | 적립금 시스템 및 옵션 기능 개발 |
+| 주재연 | 기능 아이디어 제안, 오류 검토 |
+
 
 - 카카오톡 및 대면 회의로 매주 코드 점검 진행
 
@@ -83,61 +84,3 @@
 
 ---
 
-## 주요 코드 흐름
-
-### kioskmain
-
-#### 관리자 로그인
-```java
-if (id.equals("admin") && pw.equals("1234")) {
-    new message("관리자 로그인", "로그인 성공");
-    new management();
-    dispose();
-    return;
-}
-
-#### 관리자 로그인
-sign_read loginCheck = new sign_read();
-if (loginCheck.login(id, pw)) {
-    new message("회원 로그인", "로그인");
-    dispose();
-    runKiosk(id);
-} else {
-    new message("아이디 또는 비밀번호가 일치하지 않습니다.", "로그인 실패");
-}
-
-#### 회원가입 버튼
-else if (e.getSource() == signUp_b) {
-    new Sign_Up();
-}
-
-
-#### 키오스크 UI실행
-UI kiosk = new UI(loggedInUserId);
-kiosk.addWindowListener(new java.awt.event.WindowAdapter() {
-    @Override
-    public void windowClosing(java.awt.event.WindowEvent e) {
-        runLogin();
-    }
-});
-
-
-참고 자료
-
-https://hyecoding.tistory.com/45
-
-
-리스크 관리
-1. 요구사항 변경 가능성
-
-초기 요구사항 명확화
-
-변경 발생 시 우선순위 재조정 및 일정 수정
-
-2. 의사소통 부족
-
-매주 진행 상황 공유 및 역할 조정
-
-3. txt 파일 기반 회원 관리
-
-장기적으로 빅데이터 기반 회원 관리 및 이벤트 자동화 목표
